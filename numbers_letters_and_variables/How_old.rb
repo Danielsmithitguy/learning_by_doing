@@ -4,7 +4,23 @@ seconds_in_min = 60
 min_in_hour = 60
 hours_in_day = 24
 days_in_week = 7
+interger_valid = false
 year = 
+
+puts "what's your current age?"
+
+while interger_valid != true
+begin
+  current_age = gets.chomp
+  n = Integer(current_age)
+  puts n
+rescue ArgumentError
+  puts"not an interger! please try again."
+  interger_valid = false
+else
+  interger_valid = true
+end
+end
 
 puts "Their are #{seconds_in_min} seconds in a minute"
 puts "There are #{min_in_hour} minutes in an hour"
