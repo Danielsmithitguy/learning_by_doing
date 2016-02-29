@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 
-#done
-#This program should take a user input and either add or subtract from a running total.
-#if user is paying off a running total and it goes bellow 0 it should give change back
-#Should also output the current running total with each line
-#user should only be allowed to input choice inputs and nothing outside of that
+# done
+# This program should take a user input and either add or subtract from a running total.
+# if user is paying off a running total and it goes bellow 0 it should give change back
+# Should also output the current running total with each line
+# user should only be allowed to input choice inputs and nothing outside of that
 
 class CashRegister
   def initialize
@@ -44,9 +44,10 @@ class CashRegister
         #running total should increase with each input
         @running_total = @running_total + input.to_f
       else
-        #running total should decrease with each input, paying the total.
-        #should also not go below 0
-        @running_total = @running_total - input.to_f
+        # running total should decrease with each input, paying the total.
+        # should also not go below 0 if payment causes total to go below 0
+        #output change
+        @running_total -= input.to_f
         if @running_total <= 0
           puts "Your change is #{@running_total.abs}."
           puts 'You may now leave the terminal by typing (Q)uit or feel free to add more things!'
@@ -61,10 +62,15 @@ class CashRegister
 end
 
 def is_valid_int(input)
-  #basic int sanitizer
-  if input.include? "."
+  # basic int sanitizer
+  if input.include? '.'
+    #chekcs to see if input is int, ie 3, 3 would return false because of float conversion below
   else
     input = input + ".0"
+  end
+  if input.end_with?(".")
+    #checks to see if the input ends with . ex 3. would return false with out this
+    input += '0'
   end
   if input.to_s == input.to_f.to_s
     return true
