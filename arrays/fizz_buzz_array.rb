@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
 
 count_array = []
-current_count = 0
 count = 1
-while count < 101
+(1..100).each do
   if count % 3 == 0 && count % 5 == 0
     current_count = "FizzBuzz"
   elsif count % 5 == 0
