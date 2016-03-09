@@ -3,9 +3,8 @@
 #A simple tomagotchi pet, can eat, drink, and sleep.
 #with every action time will increment an hour upto 8 depending on action
 #The need for water, food, sleep will increase each hour unless said action was taken
+
 class Pet
-
-
   def initialize
     are_you_sure = false
     while are_you_sure == false
@@ -24,6 +23,7 @@ class Pet
     @sleep = 0
     @is_alive = true
   end
+
   def Yes_no?
     response = gets.chomp.downcase
     if response == 'y' || response == 'yes'
@@ -78,11 +78,11 @@ class Pet
   end
 
 
-def wait
-  hours = 1
-  @current_time.time_passing(hours)
-  self.status(hours)
-end
+  def wait
+    hours = 1
+    @current_time.time_passing(hours)
+    self.status(hours)
+  end
 
 end
 
@@ -102,37 +102,38 @@ class Time
   def current_time
     string = @time.to_s + ' hundred hours'
   end
+end
 
-  pet = Pet.new
-  while true
-    pet.output
-    action = gets.chomp.downcase
-    case action
-      when 'e', 'eat'
-        pet.eat
-      when 's', 'sleep'
-        pet.sleep
-      when 'd', 'drink'
-        pet.drink
-      when 'w', 'wait'
-        pet.wait
-      when 'q', 'quit'
-        puts "Are you sure you want to quit?"
-        puts "(Y)es/(N)o"
-        if pet.Yes_no?
-          puts "Goodbye"
-          exit
-        end
-      when 'h','help'
-        puts "This is the help menu \n---------------------------"
-        puts '(H)elp : You are here'
-        puts '(E)at : Feed your pet!'
-        puts "(D)rink: have #{$pet_name} take a drink"
-        puts "(S)leep : put #{$pet_name} to sleep"
-        puts "(W)ait : kill an hour"
-        puts '(Q)uit : Goodbye!'
-      else
-        puts "Im not sure what you mean, try (H)elp for more options"
-    end
+pet = Pet.new
+while true
+  pet.output
+  action = gets.chomp.downcase
+  case action
+    when 'e', 'eat'
+      pet.eat
+    when 's', 'sleep'
+      pet.sleep
+    when 'd', 'drink'
+      pet.drink
+    when 'w', 'wait'
+      pet.wait
+    when 'q', 'quit'
+      puts "Are you sure you want to quit?"
+      puts "(Y)es/(N)o"
+      if pet.Yes_no?
+        puts "Goodbye"
+        exit
+      end
+    when 'h', 'help'
+      puts "This is the help menu \n---------------------------"
+      puts '(H)elp : You are here'
+      puts '(E)at : Feed your pet!'
+      puts "(D)rink: have #{$pet_name} take a drink"
+      puts "(S)leep : put #{$pet_name} to sleep"
+      puts "(W)ait : kill an hour"
+      puts '(Q)uit : Goodbye!'
+    else
+      puts "Im not sure what you mean, try (H)elp for more options"
   end
 end
+
