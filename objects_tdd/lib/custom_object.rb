@@ -1,19 +1,15 @@
 #!/usr/bin/env ruby
 
+require_relative 'time'
+
 #A simple tomagotchi pet, can eat, drink, and sleep.
 #with every action time will increment an hour upto 8 depending on action
 #The need for water, food, sleep will increase each hour unless said action was taken
 
 class Pet
   def initialize
-    are_you_sure = false
-    while are_you_sure == false
-      puts "Welcome, what would you like to name your new pet?"
-      $pet_name = gets.chomp
-      puts "are you sure you want to name your pet #{$pet_name}?"
-      puts "(Y)es/(N)o"
-      are_you_sure = Yes_no?
-    end
+    foo
+    pet_name
     @current_time = Time.new
     @max_hunger = 100
     @hunger = 0
@@ -22,6 +18,20 @@ class Pet
     @max_sleep = 18
     @sleep = 0
     @is_alive = true
+  end
+
+  def pet_name (name)
+    are_you_sure = false
+    while are_you_sure == false
+      puts "Welcome, what would you like to name your new pet?"
+      puts "are you sure you want to name your pet #{name}?"
+      puts "(Y)es/(N)o"
+      are_you_sure = Yes_no?
+    end
+  end
+
+  def foo
+    gets.chomp
   end
 
   def Yes_no?
@@ -55,7 +65,7 @@ class Pet
   end
 
   def output
-    puts "Pet Name : #{$pet_name}"
+    puts "Pet Name : #{the_pets_name}"
     puts "current time is #{@current_time.current_time}"
     puts "Current Stats : Hunger - #{@hunger} | Thrist - #{@thrist} | Hours awake : #{@sleep}"
   end
@@ -86,23 +96,7 @@ class Pet
 
 end
 
-class Time
-  def initialize
-    @time = 0.000
-    @is_am = true
-  end
 
-  def time_passing(hours)
-    @time += hours
-    if @time > 24
-      @time -= 24
-    end
-  end
-
-  def current_time
-    string = @time.to_s + ' hundred hours'
-  end
-end
 
 pet = Pet.new
 while true
@@ -128,12 +122,11 @@ while true
       puts "This is the help menu \n---------------------------"
       puts '(H)elp : You are here'
       puts '(E)at : Feed your pet!'
-      puts "(D)rink: have #{$pet_name} take a drink"
-      puts "(S)leep : put #{$pet_name} to sleep"
+      puts "(D)rink: have #{the_pets_name} take a drink"
+      puts "(S)leep : put #{the_pets_name} to sleep"
       puts "(W)ait : kill an hour"
       puts '(Q)uit : Goodbye!'
     else
       puts "Im not sure what you mean, try (H)elp for more options"
-  end
-end
+  end end
 
