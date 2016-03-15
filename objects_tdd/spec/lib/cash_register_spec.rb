@@ -26,12 +26,13 @@ describe CashRegister do
       expect(subject.total).to eq(-3)
     end
 
+
     describe '#pay' do
       context 'should pay to balance' do
         it 'total still has a standing balance' do
-          subject.add(5)
+          subject.add(6)
           subject.pay(4)
-          expect(subject.total).to eq(1)
+          expect(subject.total).to eq(2)
         end
         it 'total returns with change, and then sets total to 0' do
           subject.add(5)
