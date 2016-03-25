@@ -26,18 +26,19 @@ describe CashRegister do
       expect(subject.total).to eq(-3)
     end
 
-
     describe '#pay' do
-      context 'should pay to balance' do
-        it 'total still has a standing balance' do
+      context 'When payment is less then total' do
+        it 'total should still have a pending ballance' do
           subject.add(6)
           subject.pay(4)
           expect(subject.total).to eq(2)
         end
-        it 'total returns with change, and then sets total to 0' do
-          subject.add(5)
-          expect(subject.pay(6)).to eq(1)
-          expect(subject.total).to eq(0)
+        context 'when payment is equal or greater then total' do
+          it 'total returns with change, and then sets total to 0' do
+            subject.add(5)
+            expect(subject.pay(6)).to eq(1)
+            expect(subject.total).to eq(0)
+          end
         end
       end
     end
