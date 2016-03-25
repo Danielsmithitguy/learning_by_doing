@@ -1,18 +1,33 @@
 #!/usr/bin/env ruby
+def bottles
+  puts "#{count} bottles of beer on the wall, #{count} bottles of beer."
+  puts "Take one down and pass it around, #{count - 1} bottles of beer on the wall.\n"
+end
+
+def bottle
+  puts "#{count} bottles of beer on the wall, #{count} bottles of beer."
+  puts "Take one down and pass it around, #{count - 1} bottle of beer on the wall.\n"
+end
+
+def go_to_store
+  puts "No more bottles of beer on the wall, no more bottles of beer.\n" \
+     "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
+end
+
+def last_count
+  puts "#{count} bottles of beer on the wall, #{count} bottles of beer."
+  puts "Take one down and pass it around, no more bottles of beer on the wall.\n"
+end
 
 def bottles_of_beer(count)
   if count >= 3
-    puts "#{count} bottles of beer on the wall, #{count} bottles of beer."
-    puts "Take one down and pass it around, #{count - 1} bottles of beer on the wall.\n"
+    bottles
   elsif count == 2
-    puts "#{count} bottles of beer on the wall, #{count} bottles of beer."
-    puts "Take one down and pass it around, #{count - 1} bottle of beer on the wall.\n"
+    bottle
   elsif count == 1
-    puts "#{count} bottles of beer on the wall, #{count} bottles of beer."
-    puts "Take one down and pass it around, no more bottles of beer on the wall.\n"
+    last_count
   elsif
-    puts "No more bottles of beer on the wall, no more bottles of beer.\n" \
-     "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
+    go_to_store
   else
     return 0
   end
