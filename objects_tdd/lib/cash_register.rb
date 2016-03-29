@@ -15,11 +15,12 @@ class CashRegister
   end
 
   def pay(number)
-    @total -= number
-    if @total < 0 
+    if number < @total
+       @total -= number
+    else
       change = @total.abs
       @total = 0
-      return change
+      change
     end
   end
 end
