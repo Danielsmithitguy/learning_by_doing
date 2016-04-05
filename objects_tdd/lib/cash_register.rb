@@ -18,6 +18,7 @@ class CashRegister
     if number < @total
        @total -= number
     else
+      @total -= number
       change = @total.abs
       @total = 0
       change
