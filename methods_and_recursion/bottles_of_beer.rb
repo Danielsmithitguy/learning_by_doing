@@ -1,12 +1,13 @@
 #!/usr/bin/env ruby
+
 def bottles
-  puts "#{count} bottles of beer on the wall, #{count} bottles of beer."
-  puts "Take one down and pass it around, #{count - 1} bottles of beer on the wall.\n"
+  puts "#{@count} bottles of beer on the wall, #{@count} bottles of beer."
+  puts "Take one down and pass it around, #{@count - 1} bottles of beer on the wall.\n"
 end
 
 def bottle
-  puts "#{count} bottles of beer on the wall, #{count} bottles of beer."
-  puts "Take one down and pass it around, #{count - 1} bottle of beer on the wall.\n"
+  puts "#{@count} bottles of beer on the wall, #{@count} bottles of beer."
+  puts "Take one down and pass it around, #{@count - 1} bottle of beer on the wall.\n"
 end
 
 def go_to_store
@@ -15,11 +16,12 @@ def go_to_store
 end
 
 def last_count
-  puts "#{count} bottles of beer on the wall, #{count} bottles of beer."
+  puts "#{@count} bottles of beer on the wall, #{@count} bottles of beer."
   puts "Take one down and pass it around, no more bottles of beer on the wall.\n"
 end
 
 def bottles_of_beer(count)
+  @count = count
   if count >= 3
     bottles
   elsif count == 2
